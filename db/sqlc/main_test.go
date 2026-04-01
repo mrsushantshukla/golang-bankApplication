@@ -15,6 +15,7 @@ const (
 )
 
 var testQueries *Queries
+var testStore *Store
 
 func TestMain(m *testing.M) {
 	conn, err := sql.Open(DBDriverName, DBConnString)
@@ -24,6 +25,7 @@ func TestMain(m *testing.M) {
 	}
 
 	testQueries = New(conn)
+	testStore = NewStore(conn)
 
 	os.Exit(m.Run())
 
